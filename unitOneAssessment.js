@@ -1,35 +1,71 @@
 let assert = require('assert')
 
 // Question One:
-
 // Write a function called isOdd that returns whether or not a number is odd.
 // If something that is not a number is passed in, return false.
-
+const isOdd = (num) => num % 2 === 1
 
 // Uncomment out the next line to test your solution
-// runQ1Tests()
+runQ1Tests()
+console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n`);
+
 
 
 // Question Two:
-
 // Write a function called numberOfDigits that returns how many digits are in a given number
-
+const numberOfDigits = (num) => {
+  let str = num.toString();
+  return str.length;
+}
 // Uncomment out the next line to test your solution
-// runQ2Tests()
+runQ2Tests()
+console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n`);
+
+
 
 // Question Three:
-
 // Write a function called disemvowel that removes all of the vowels from a string.
 // Treat y as a consonant, not a vowel
-
+const disemvowel = (str) => {
+  let lowerStr = str.toLowerCase();
+  let noVowels = '';
+  for (let i = 0; i < lowerStr.length; i++) {
+    if (lowerStr[i] !== 'a' &&
+        lowerStr[i] !== 'e' &&
+        lowerStr[i] !== 'i' &&
+        lowerStr[i] !== 'o' &&
+        lowerStr[i] !== 'u' ) {
+          noVowels += str[i];
+        }
+  }
+  return noVowels;
+}
 // Uncomment out the next line to test your solution
-// runQ3Tests()
+runQ3Tests()
+console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n`);
+
+
 
 // Question Four:
 // Write a function called secondSmallest that returns the second smallest number in an array
-
+const secondSmallest = (array) => {
+  let smallest = Infinity;
+  let secondSmallest;
+  array.map(num => {
+    if (num < smallest) {
+        secondSmallest = smallest;
+        smallest = num;
+    } else if (num < secondSmallest) {
+        secondSmallest = num;
+    }
+  })
+  return secondSmallest;
+}
 // Uncomment out the next line to test your solution
-// runQ4Tests()
+runQ4Tests()
+console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n`);
+
+
 
 // Question Five:
 // Write a function called getLocations that takes in an array of objects that look like the array below,
@@ -41,22 +77,33 @@ let assert = require('assert')
 
 // Sample output:
 // ["Algeria", "Belize", "China", "Denmark"]
-
+const getLocations = (array) => { 
+  let keys = [];
+  for (let object of array) {
+      keys.push(object.location)
+  }
+  return keys;
+}
 // Uncomment out the next line to test your solution
-// runQ5Tests()
+runQ5Tests()
+console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n`);
+
 
 
 // Question Six:
-
-// Write a function called onlyOddStrings that takes in an array of strings as input and returns an array that only includes strings with an odd number of characters
+// Write a function called onlyOddStrings that takes in an array of strings as input and returns an array that only 
+// includes strings with an odd number of characters
 // Your function should use a higher-ordered function (e.g map, filter, reduce, every, sort) in its implementation
-
+const onlyOddStrings = (array) => {
+  return array.filter(string => string.length %2 === 1)
+}
 // Uncomment out the next line to test your solution
-// runQ6Tests()
+runQ6Tests()
+console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n`);
+
 
 
 // Question Seven:
-
 // a.
 // Make a class called Day
 // Give it two properties set by the constructor named temperature and weather
@@ -66,12 +113,37 @@ let assert = require('assert')
 // let myDay = Day(80, "sunny")
 // myDay.getDescription() // returns "It is 80 degrees and sunny"
 
+class Day {
+  constructor(temperature, weather) {
+    this.temperature = temperature;
+    this.weather = weather;
+  }
+  getDescription() {
+    let description = `It is ${this.temperature} degrees and ${this.weather}`;
+    console.log(description);
+    return description;
+  }
+}
 //b.
-// Make a function called getAllDayDescriptions that takes in an array of Day objects and returns an array of their descriptions.  Use a higher-ordered function (e.g map, filter, reduce, every, sort) in your implementation.
+// Make a function called getAllDayDescriptions that takes in an array of Day objects 
+// and returns an array of their descriptions.  Use a higher-ordered function 
+// (e.g map, filter, reduce, every, sort) in your implementation.
 // The output should be in the same order as the input
-
+const getAllDayDescriptions = (arrayOfDayObjects) => {
+  return arrayOfDayObjects.map(dayObject => {
+    return dayObject.getDescription();
+  });
+}
 // Uncomment out the next line to test your solution
-// runQ7Tests()
+// let d1 = new Day(50, "raining");
+// let d2 = new Day(99, "sunny");
+// let d3 = new Day(24, "snowing");
+// let arr = [d1, d2, d3];
+
+// console.log(`\n================`)
+// let a = getAllDayDescriptions(arr);
+runQ7Tests()
+console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n`);
 
 
 
